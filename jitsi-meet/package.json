@@ -1,0 +1,36 @@
+{
+    "name": "react-jitsi-ts-demo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "parcel public/index.html",
+        "build": "parcel build public/index.html"
+    },
+    "dependencies": {
+        "axios": "^0.19.2",
+        "bootstrap": "4.5.0",
+        "node-sass": "^4.14.1",
+        "parcel": "^1.12.4",
+        "react": "^16.13.1",
+        "react-app-polyfill": "1.0.6",
+        "react-dom": "16.13.1",
+        "react-redux": "^7.2.0",
+        "react-router-dom": "5.2.0",
+        "reactstrap": "8.4.1",
+        "redux": "^4.0.5"
+    },
+    "alias": {
+        "react": "./node_modules/react",
+        "react-dom": "./node_modules/react-dom/profiling",
+        "scheduler/tracing": "./node_modules/scheduler/tracing-profiling"
+    },
+    "devDependencies": {
+        "@types/axios": "^0.14.0",
+        "@types/react": "^16.9.32",
+        "@types/react-dom": "^16.9.6",
+        "react-jitsi": "^1.0.1",
+        "sass": "^1.26.8",
+        "typescript": "^3.9.6"
+    }
+}

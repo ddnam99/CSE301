@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: Jitsi
+  description: "[#facebook](https://www.facebook.com/nampt1999) [#twitter](https://twitter.com/ddnam99) [#github](https://github.com/ddnam99)"
+  contact:
+    email: namdd72@wru.vn
+    name: Dương Đức Nam
+
+servers:
+  - url: http://localhost:4000
+
+tags:
+  - name: user
+
+paths:
+  /users/login:
+    post:
+      tags:
+        - user
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: success
+
+  /users/change-pass:
+    put:
+      tags:
+        - user
+      security:
+        - Authorization: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - oldPass
+                - newPass
+              properties:
+                oldPass:
+                  type: string
+                newPass:
+                  type: string
+      responses:
+        "200":
+          description: success
+
+  /users:
+    get:
+      tags:
+        - user
+      security:
+        - Authorization: []
+      responses:
+        "200":
+          description: success
+    post:
+      tags:
+        - user
+      security:
+        - Authorization: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - fullName
+              properties:
+                email:
+                  type: string
+                fullName:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: success
+
+  /users/{email}:
+    get:
+      tags:
+        - user
+      security:
+        - Authorization: []
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+    delete:
+      tags:
+        - user
+      security:
+        - Authorization: []
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+
+components:
+  securitySchemes:
+    Authorization:
+      type: apiKey
+      name: authorization
+      in: header

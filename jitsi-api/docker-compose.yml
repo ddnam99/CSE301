@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  database:
+    image: mongo:latest
+    container_name: 'jitsi-database'
+    restart: always
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ../data/db:/data/db
+    ports:
+      - 27018:27017
+
+  jitsi-api:
+    image: jitsi-api
+    build: .
+    restart: always
+    depends_on:
+      - 'database'
+    environment:
+      - PORT=4000
+      - DB_URL=mongodb://database/jitsi
+      - ACCESS_TOKEN_SECRET=jitsi-api
+    ports:
+      - 4000:4000
