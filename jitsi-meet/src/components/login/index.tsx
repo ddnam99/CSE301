@@ -1,30 +1,45 @@
 import React from "react";
-import Input from "../input";
 import { Link, Redirect } from "react-router-dom";
-import { client, setToken } from "../../api/client";
+import { AuthState } from "../../redux/reducers/Auth.reducers";
+import { RootState } from "../../redux/store";
+
+import Interceptors from "../../helpers/Interceptors";
+import Input from "../input";
+
+import { useDispatch, useSelector } from "react-redux";
+import { actLoginSuccess } from "../../redux/actions/Auth.actions";
 
 import "../../assets/style/login-screen.scss";
 
 const Login = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [loginSuccess, setLoginSuccess] = React.useState(false);
 
-  const login = () => {
-    const body = {
-      username: email,
-      password: password,
-    };
+  const { isAuth } = useSelector<RootState, AuthState>(
+    (state) => state.authReducer
+  );
 
-    client.post("localhost:3000/login", body).then((response: any) => {
-      if (response.status === 200 && response.body) {
-        //setToken()
-        setLoginSuccess(true);
-      }
-    });
+  if (isAuth) return <Redirect to="/" />;
+
+  const dispatch = useDispatch();
+  const onLoginSuccess = (user: any, token: string) =>
+    dispatch(actLoginSuccess(user, token));
+
+  const handleLogin = async () => {
+    try {
+      const data = {
+        email: email,
+        password: password,
+      };
+
+      const res = await Interceptors.post("/users/login", data);
+
+      if (res.data?.message === "success")
+        onLoginSuccess(res.data.user, res.data.token);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  if (loginSuccess) return <Redirect to="/" />;
 
   return (
     <div className="login-screen d-flex">
@@ -50,7 +65,7 @@ const Login = () => {
             onChange={setPassword}
             placeholder={"Mật khẩu"}
           />
-          <button className="btn btn-outline-secondary" onClick={login}>
+          <button className="btn btn-outline-secondary" onClick={handleLogin}>
             Truy cập
           </button>
         </div>

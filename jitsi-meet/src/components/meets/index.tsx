@@ -1,33 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { AuthState } from "../../redux/reducers/Auth.reducers";
+import { RootState } from "../../redux/store";
+import Jitsi from "react-jitsi";
+
 import Loader from "../loader";
 import CreateRoom from "./create-room";
 import JoinRoom from "./join-room";
-import Jitsi from "react-jitsi";
+
+import { useDispatch, useSelector } from "react-redux";
+import { actLogout } from "../../redux/actions/Auth.actions";
 
 import "../../assets/style/meet-screen.scss";
 
 const Meets = () => {
-  const [displayName, setDisplayName] = useState("");
   const [roomName, setRoomName] = useState("");
   const [password, setPassword] = useState("");
   const [createRoom, setCreateRoom] = useState(false);
   const [joinRoom, setJoinRoom] = useState(false);
   const [onCall, setOnCall] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setRoomName("");
     setPassword("");
   }, [createRoom, joinRoom]);
 
   const log = (api: any) => {
-    alert(JSON.stringify(api));
+    console.log(api);
   };
+
+  const dispatch = useDispatch();
+  const onLogout = () => dispatch(actLogout());
+
+  const { user } = useSelector<RootState, AuthState>(
+    (state) => state.authReducer
+  );
 
   if (onCall)
     return (
       <Jitsi
         roomName={roomName}
-        displayName={displayName}
+        displayName={user?.fullName}
         password={password}
         loadingComponent={Loader}
         onAPILoad={log}
@@ -38,6 +50,7 @@ const Meets = () => {
           width: "100%",
           height: "800px",
         }}
+        domain="meet.jit.si"
       />
     );
 
@@ -65,6 +78,9 @@ const Meets = () => {
           setOnCall={setOnCall}
         />
       </div>
+      <button onClick={onLogout} type="button">
+        Log out
+      </button>
     </div>
   );
 };

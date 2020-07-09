@@ -27,8 +27,8 @@ exports.login = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email })
 
-    if (!bcrypt.compareSync(req.body.password, user.password))
-      return res.status(404).jsonp({ message: 'login failed' })
+    if (!user || !bcrypt.compareSync(req.body.password, user.password))
+      return res.status(403).jsonp({ message: 'login failed' })
 
     const token = jwt.sign(
       {
@@ -46,13 +46,13 @@ exports.login = async (req, res) => {
 
     return res.jsonp({
       message: 'success',
-      data: {
+      user: {
         _id: user._id,
         email: user.email,
         fullName: user.fullName,
         roles: user.roles,
-        token: token,
       },
+      token,
     })
   } catch (error) {
     logger.error(error)
@@ -92,7 +92,7 @@ exports.list = async (req, res) => {
       })
       .lean()
 
-    return res.jsonp({ message: 'success', data: users })
+    return res.jsonp({ message: 'success', users })
   } catch (error) {
     logger.error(error)
     return res.status(500).jsonp({
@@ -107,7 +107,7 @@ exports.userByEmail = async (req, res, next, email) => {
       return res.status(401).json({
         message: 'Unauthorized',
       })
-      
+
     const user = await User.findOne({ email: email }).select({ token: 0, password: 0 })
 
     if (!user) return res.status(404).jsonp({ message: 'cannot find email' })
@@ -126,14 +126,14 @@ exports.userByEmail = async (req, res, next, email) => {
 exports.read = async (req, res) => {
   return res.jsonp({
     message: 'success',
-    data: req.userByEmail,
+    user: req.userByEmail,
   })
 }
 
 exports.delete = async (req, res) => {
   try {
     const user = req.userByEmail
-    
+
     if (user.email === req.user.email)
       return res.status(500).json({ message: 'Can not remove yourself' })
 
