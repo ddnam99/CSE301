@@ -24,7 +24,7 @@ const Meets = () => {
     setPassword("");
   }, [createRoom, joinRoom]);
 
-  const log = (api: any) => {
+  const logAPI = (api: any) => {
     console.log(api);
   };
 
@@ -42,7 +42,7 @@ const Meets = () => {
         displayName={user?.fullName}
         password={password}
         loadingComponent={Loader}
-        onAPILoad={log}
+        onAPILoad={logAPI}
         containerStyle={{
           display: "flex",
           alignItems: "center",
@@ -50,7 +50,6 @@ const Meets = () => {
           width: "100%",
           height: "800px",
         }}
-        domain="meet.jit.si"
       />
     );
 
