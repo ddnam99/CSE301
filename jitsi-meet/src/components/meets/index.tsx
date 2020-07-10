@@ -56,8 +56,8 @@ const Meets = () => {
   return (
     <div className="container meet-screen mt-4">
       <div className="welcome-content">
-        <div className="mb-2">Bài tập lớn</div>
-        <h1 className="mb-5">CSE301</h1>
+        <div className="mb-2">Xin chào</div>
+        <h1 className="mb-5">{user?.fullName}</h1>
         <CreateRoom
           roomName={roomName}
           password={password}

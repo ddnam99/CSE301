@@ -3,8 +3,8 @@ version: "3.4"
 services:
   database:
     image: mongo:latest
-    container_name: "jitsi-database"
-    restart: always
+    container_name: jitsi-database
+    restart: unless-stopped
     environment:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
@@ -16,9 +16,9 @@ services:
   api:
     image: jitsi-api
     build: ./jitsi-api
-    restart: always
+    restart: unless-stopped
     depends_on:
-      - "database"
+      - database
     environment:
       - PORT=4000
       - DB_URL=mongodb://database/jitsi
@@ -29,7 +29,7 @@ services:
   meet:
     image: jitsi-meet
     build: ./jitsi-meet
-    restart: always
+    restart: unless-stopped
     depends_on:
       - api
     ports:
