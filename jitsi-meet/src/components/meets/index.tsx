@@ -41,6 +41,7 @@ const Meets = () => {
         roomName={roomName}
         displayName={user?.fullName}
         password={password}
+        // domain="meet.8x8.vc"
         loadingComponent={Loader}
         onAPILoad={logAPI}
         containerStyle={{
@@ -49,6 +50,10 @@ const Meets = () => {
           justifyContent: "center",
           width: "100%",
           height: "800px",
+        }}
+        config={{
+          // @ts-ignore
+          prejoinPageEnabled: false,
         }}
       />
     );
