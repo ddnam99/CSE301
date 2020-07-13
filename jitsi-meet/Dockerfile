@@ -5,6 +5,5 @@ COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install
 
 COPY . .
-
-EXPOSE 1234
+EXPOSE 3000
 CMD npm start
