@@ -33,4 +33,4 @@ services:
     depends_on:
       - api
     ports:
-      - 80:1234
+      - 3000:3000
