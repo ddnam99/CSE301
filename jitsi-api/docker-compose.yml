@@ -3,7 +3,7 @@ version: '3.4'
 services:
   database:
     image: mongo:latest
-    container_name: jitsi-database
+    container_name: cse301.database
     restart: unless-stopped
     environment:
       - MONGO_DATA_DIR=/data/db
@@ -13,8 +13,9 @@ services:
     ports:
       - 27018:27017
 
-  jitsi-api:
-    image: jitsi-api
+  api:
+    image: cse301/api
+    container_name: cse301.api
     build: .
     restart: unless-stopped
     depends_on:

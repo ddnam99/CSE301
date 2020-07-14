@@ -3,7 +3,7 @@ version: "3.4"
 services:
   database:
     image: mongo:latest
-    container_name: jitsi-database
+    container_name: cse301.database
     restart: unless-stopped
     environment:
       - MONGO_DATA_DIR=/data/db
@@ -14,21 +14,21 @@ services:
       - 27018:27017
 
   api:
-    image: jitsi-api
+    image: jcse310/api
     build: ./jitsi-api
+    container_name: cse301.api
     restart: unless-stopped
     depends_on:
       - database
     environment:
-      - PORT=4000
       - DB_URL=mongodb://database/jitsi
-      - ACCESS_TOKEN_SECRET=jitsi-api
     ports:
       - 4000:4000
 
-  meet:
-    image: jitsi-meet
+  web:
+    image: cse301/web
     build: ./jitsi-meet
+    container_name: cse301.web
     restart: unless-stopped
     depends_on:
       - api
