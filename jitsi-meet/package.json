@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "start": "parcel -p 3000 public/index.html",
-        "build": "parcel build public/index.html",
+        "build": "parcel build public/index.html --no-source-maps",
         "serve": "serve -s dist -l 3000"
     },
     "dependencies": {
