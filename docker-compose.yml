@@ -23,7 +23,7 @@ services:
     environment:
       - DB_URL=mongodb://database/jitsi
     ports:
-      - 4000:4000
+      - 4567:4000
 
   web:
     image: cse301/web
@@ -33,4 +33,4 @@ services:
     depends_on:
       - api
     ports:
-      - 3000:3000
+      - 3456:3000
