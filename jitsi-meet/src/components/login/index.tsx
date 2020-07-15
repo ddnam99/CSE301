@@ -32,7 +32,7 @@ const Login = () => {
         password: password,
       };
 
-      const res = await Interceptors.post("/users/login", data);
+      const res = await Interceptors.post("/api/users/login", data);
 
       if (res.data?.message === "success")
         onLoginSuccess(res.data.user, res.data.token);

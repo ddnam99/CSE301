@@ -14,7 +14,7 @@ tags:
   - name: user
 
 paths:
-  /users/login:
+  /api/users/login:
     post:
       tags:
         - user
@@ -35,7 +35,7 @@ paths:
         "200":
           description: success
 
-  /users/change-pass:
+  /api/users/change-pass:
     put:
       tags:
         - user
@@ -58,7 +58,7 @@ paths:
         "200":
           description: success
 
-  /users:
+  /api/users:
     get:
       tags:
         - user
@@ -92,7 +92,7 @@ paths:
         "200":
           description: success
 
-  /users/{email}:
+  /api/users/{email}:
     get:
       tags:
         - user

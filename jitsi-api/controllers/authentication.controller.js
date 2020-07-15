@@ -6,7 +6,7 @@ const rolesConst = require('../constants/roles.const')
 
 exports.isAuth = async (req, res, next) => {
   try {
-    if (req.originalUrl === 'api/users/login' || req.originalUrl.startsWith('api/docs')) return next()
+    if (req.originalUrl === '/api/users/login' || req.originalUrl.startsWith('/api/docs')) return next()
 
     if (!req.headers.authorization) return res.status(403).json({ message: 'no token' })
 

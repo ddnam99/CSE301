@@ -19,7 +19,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(authenticationControllers.isAuth)
-app.use('api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 require(path.resolve('./routes/users.route'))(app)
 
