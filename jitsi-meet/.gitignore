@@ -49,3 +49,5 @@ Thumbs.db
 *.mo
 .cache
 package-lock.json
+
+.env
