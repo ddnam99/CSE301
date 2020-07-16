@@ -14,7 +14,7 @@ services:
       - 27018:27017
 
   api:
-    image: jcse301/api
+    image: cse301/api
     build: ./jitsi-api
     container_name: cse301.api
     restart: unless-stopped
