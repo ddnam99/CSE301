@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { AuthState } from "../../redux/reducers/Auth.reducers";
 import { RootState } from "../../redux/store";
-import Jitsi from "react-jitsi";
 
-import Loader from "../loader";
 import CreateRoom from "./create-room";
 import JoinRoom from "./join-room";
+import Jitsi from "../Jitsi"
 
 import { useDispatch, useSelector } from "react-redux";
 import { actLogout } from "../../redux/actions/Auth.actions";
@@ -41,16 +40,7 @@ const Meets = () => {
         roomName={roomName}
         displayName={user?.fullName}
         password={password}
-        // domain="meet.8x8.vc"
-        loadingComponent={Loader}
         onAPILoad={logAPI}
-        containerStyle={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-          height: "800px",
-        }}
         config={{
           // @ts-ignore
           prejoinPageEnabled: false,
