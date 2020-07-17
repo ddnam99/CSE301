@@ -4,7 +4,7 @@ import { RootState } from "../../redux/store";
 
 import CreateRoom from "./create-room";
 import JoinRoom from "./join-room";
-import Jitsi from "../Jitsi"
+import Jitsi from "../Jitsi";
 
 import { useDispatch, useSelector } from "react-redux";
 import { actLogout } from "../../redux/actions/Auth.actions";
@@ -41,6 +41,10 @@ const Meets = () => {
         displayName={user?.fullName}
         password={password}
         onAPILoad={logAPI}
+        interfaceConfig={{
+          // @ts-ignore
+          disableDeepLinking: true,
+        }}
         config={{
           // @ts-ignore
           prejoinPageEnabled: false,
