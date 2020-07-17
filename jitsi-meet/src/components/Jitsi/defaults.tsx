@@ -11,7 +11,7 @@ export const ContainerStyle: React.CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
-  height: "800px",
+  height: window.innerHeight,
 };
 
 export const FrameStyle = (loading: boolean): React.CSSProperties => ({
