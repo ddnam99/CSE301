@@ -24,7 +24,7 @@ const CreateRoom = React.memo((props: UIProps) => {
 
   if (createRoom)
     return (
-      <div className="d-flex flex-column w-25">
+      <div className="d-flex flex-column" style={{width: "250px"}}>
         <Input
           className="first-input"
           value={roomName}

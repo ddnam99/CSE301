@@ -17,7 +17,7 @@ const JoinRoom = React.memo((props: UIProps) => {
   if (joinRoom)
     return (
       <>
-        <div className="d-flex flex-column w-25">
+        <div className="d-flex flex-column" style={{width: "250px"}}>
           <Input
             className="normal-input"
             value={roomName}

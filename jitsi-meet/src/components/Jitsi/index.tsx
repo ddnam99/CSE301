@@ -24,7 +24,7 @@ const Jitsi: React.FC<Props> = (props: Props) => {
   const [loading, setLoading] = useState(true);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const startConference = (): void => {
+  const startConference = () => {
     try {
       const options: JitsiMeetAPIOptions = {
         roomName,
