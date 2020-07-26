@@ -18,7 +18,7 @@ const Meets = () => {
   const [joinRoom, setJoinRoom] = useState(false);
   const [onCall, setOnCall] = useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setRoomName("");
     setPassword("");
   }, [createRoom, joinRoom]);
@@ -41,9 +41,13 @@ const Meets = () => {
         displayName={user?.fullName}
         password={password}
         onAPILoad={logAPI}
+        // @ts-ignore
         interfaceConfig={{
-          // @ts-ignore
-          disableDeepLinking: true,
+          SHOW_JITSI_WATERMARK: false,
+          SHOW_BRAND_WATERMARK: false,
+          SHOW_WATERMARK_FOR_GUESTS: false,
+          SHOW_CHROME_EXTENSION_BANNER: false,
+          SHOW_POWERED_BY: false,
         }}
         config={{
           // @ts-ignore

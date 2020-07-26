@@ -43,9 +43,6 @@
       }
     }
 
-    .normal-input {
-      border-radius: 5px;
-    }
     .first-input {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
@@ -54,6 +51,12 @@
     .last-input {
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
+    }
+
+    select {
+      border-radius: 5px;
+      background-color: white;
+      padding: 5px 5px;
     }
 
     button {
