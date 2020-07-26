@@ -1,5 +1,6 @@
 import React from "react";
-import Input from "../input";
+
+import Interceptors from "../../helpers/Interceptors";
 
 interface UIProps {
   roomName: string;
@@ -11,20 +12,30 @@ interface UIProps {
 }
 
 const JoinRoom = React.memo((props: UIProps) => {
+  const [selectedRoom, setSelectedRoom] = React.useState("");
+
   const { roomName, joinRoom } = props;
   const { setRoomName, setJoinRoom, setCreateRoom, setOnCall } = props;
+
+  const handleJoinRoom = () => {
+    setRoomName(selectedRoom);
+    setOnCall(true);
+  };
 
   if (joinRoom)
     return (
       <>
-        <div className="d-flex flex-column" style={{width: "250px"}}>
-          <Input
-            className="normal-input"
-            value={roomName}
-            onChange={setRoomName}
-            placeholder="Tên phòng"
-          />
-          <button onClick={() => setOnCall(true)}>Tham gia</button>
+        <div className="d-flex flex-column" style={{ width: "250px" }}>
+          <select onChange={(e) => setSelectedRoom(e.target.value)}>
+            <option value="" disabled selected>
+              Chọn phòng
+            </option>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+          <button onClick={handleJoinRoom}>Tham gia</button>
         </div>
       </>
     );

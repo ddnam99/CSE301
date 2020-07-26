@@ -1,5 +1,7 @@
 import React from "react";
+
 import Input from "../input";
+import Interceptors from "../../helpers/Interceptors";
 
 interface UIProps {
   roomName: string;
@@ -22,9 +24,22 @@ const CreateRoom = React.memo((props: UIProps) => {
     setOnCall,
   } = props;
 
+  const handleCreateRoom = async () => {
+    try {
+      const res = await Interceptors.post("/api/rooms", { name: roomName });
+
+      if (res.data?.message === "success") {
+        setRoomName(res.data.id);
+        setOnCall(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (createRoom)
     return (
-      <div className="d-flex flex-column" style={{width: "250px"}}>
+      <div className="d-flex flex-column" style={{ width: "250px" }}>
         <Input
           className="first-input"
           value={roomName}
@@ -38,7 +53,7 @@ const CreateRoom = React.memo((props: UIProps) => {
           onChange={setPassword}
           placeholder="Mật khẩu"
         />
-        <button onClick={() => setOnCall(true)}>Tạo cuộc họp</button>
+        <button onClick={handleCreateRoom}>Tạo cuộc họp</button>
       </div>
     );
 
