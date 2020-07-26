@@ -12,6 +12,7 @@ servers:
 
 tags:
   - name: user
+  - name: room
 
 paths:
   /api/users/login:
@@ -118,6 +119,34 @@ paths:
           required: true
           schema:
             type: string
+      responses:
+        "200":
+          description: success
+        
+  /api/rooms:
+    get:
+      tags:
+        - room
+      security:
+        - Authorization: []
+      responses:
+        "200":
+          description: success
+    post:
+      tags:
+        - room
+      security:
+        - Authorization: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
       responses:
         "200":
           description: success

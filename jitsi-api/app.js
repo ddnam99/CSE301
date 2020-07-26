@@ -24,6 +24,7 @@ app.use(authenticationControllers.isAuth)
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 require(path.resolve('./routes/users.route'))(app)
+require(path.resolve('./routes/rooms.route'))(app)
 
 const option = {
   useNewUrlParser: true,
