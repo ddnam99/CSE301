@@ -28,7 +28,7 @@ exports.list = async (req, res) => {
       })
       .lean()
 
-    return res.jsonp({ message: 'success', users: rooms })
+    return res.jsonp({ message: 'success', rooms })
   } catch (error) {
     logger.error(error)
     return res.status(500).jsonp({

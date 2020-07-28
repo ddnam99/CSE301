@@ -3,7 +3,6 @@ import React from "react";
 import Interceptors from "../../helpers/Interceptors";
 
 interface UIProps {
-  roomName: string;
   joinRoom: boolean;
   setRoomName: (roomName: string) => void;
   setJoinRoom: (joinRoom: boolean) => void;
@@ -13,9 +12,20 @@ interface UIProps {
 
 const JoinRoom = React.memo((props: UIProps) => {
   const [selectedRoom, setSelectedRoom] = React.useState("");
+  const [rooms, setRooms] = React.useState([]);
 
-  const { roomName, joinRoom } = props;
+  const { joinRoom } = props;
   const { setRoomName, setJoinRoom, setCreateRoom, setOnCall } = props;
+
+  const fetchRooms = async () => {
+    try {
+      const res = await Interceptors.get("/api/rooms");
+
+      if (res.status === 200) setRooms(res.data.rooms);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleJoinRoom = () => {
     if (selectedRoom) {
@@ -32,10 +42,9 @@ const JoinRoom = React.memo((props: UIProps) => {
             <option value="" disabled selected>
               Chọn phòng
             </option>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            {rooms.map((room: any) => (
+              <option value={room._id}>{room.name}</option>
+            ))}
           </select>
           <button onClick={handleJoinRoom}>Tham gia</button>
         </div>
@@ -48,6 +57,7 @@ const JoinRoom = React.memo((props: UIProps) => {
       onClick={() => {
         setCreateRoom(false);
         setJoinRoom(true);
+        fetchRooms();
       }}
     >
       <div className="box-circle shadow-sm">

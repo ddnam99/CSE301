@@ -72,7 +72,6 @@ const Meets = () => {
           setOnCall={setOnCall}
         />
         <JoinRoom
-          roomName={roomName}
           joinRoom={joinRoom}
           setRoomName={setRoomName}
           setJoinRoom={setJoinRoom}

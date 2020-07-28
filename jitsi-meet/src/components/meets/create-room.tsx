@@ -28,7 +28,7 @@ const CreateRoom = React.memo((props: UIProps) => {
     try {
       const res = await Interceptors.post("/api/rooms", { name: roomName });
 
-      if (res.data?.message === "success") {
+      if (res.status === 200) {
         setRoomName(res.data.id);
         setOnCall(true);
       }
