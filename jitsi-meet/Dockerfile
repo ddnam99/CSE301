@@ -1,7 +1,7 @@
 FROM node:12.18-alpine as builder
 
 WORKDIR /app
-ENV JITSI_API=http://localhost:4567
+ENV JITSI_API=https://cse301.namdd72.tech
 
 COPY package.json .
 RUN npm install 
