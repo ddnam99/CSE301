@@ -21,4 +21,5 @@
 **/values.dev.yaml
 **/dist
 **/.cache
+**/.env
 README.md

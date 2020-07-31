@@ -1,6 +1,6 @@
 FROM node:12.18-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 EXPOSE 4000
 
 COPY package.json .

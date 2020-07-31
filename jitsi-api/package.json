@@ -1,19 +1,16 @@
 {
-  "name": "jitsi-api",
+  "name": "CSE301-api",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
+  "license": "ISC",
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Duong Duc Nam",
-  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "crypto-hash": "^1.2.2",
     "dotenv": "^8.2.0",
     "eslint": "^7.3.1",
     "express": "^4.17.1",
