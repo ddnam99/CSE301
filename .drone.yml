@@ -14,6 +14,7 @@ steps:
       command_timeout: 6m
       script:
         - cd .namdd72/CSE301
+        - git reset HEAD --hard
         - git pull
         - docker-compose up --build -d
     when:
