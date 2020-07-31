@@ -24,7 +24,6 @@ const Input = React.memo((props: UIProps) => {
     placeholder,
     style,
   } = props;
-
   return (
     <input
       id={id ?? id}

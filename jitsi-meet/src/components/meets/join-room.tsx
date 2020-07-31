@@ -42,9 +42,16 @@ const JoinRoom = React.memo((props: UIProps) => {
             <option value="" disabled selected>
               Chọn phòng
             </option>
+<<<<<<< HEAD
             {rooms.map((room: any) => (
               <option value={room._id}>{room.name}</option>
             ))}
+=======
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+>>>>>>> 65575f607aa0ebfc80ec18e03f15b3e95674e47c
           </select>
           <button onClick={handleJoinRoom}>Tham gia</button>
         </div>
