@@ -1,12 +1,12 @@
 FROM node:12.18-alpine as builder
 
 WORKDIR /app
-ENV JITSI_API=https://cse301.namdd72.tech
 
 COPY package.json .
 RUN npm install 
 
 COPY . .
+ENV JITSI_API=https://cse301.namdd72.tech
 RUN npm run build
 
 FROM nginx:1.14.2-alpine
