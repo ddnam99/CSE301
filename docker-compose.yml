@@ -23,15 +23,17 @@ services:
       - database
     environment:
       - DB_URL=mongodb://doubled:1397@database/jitsi?authSource=admin
-    ports:
-      - 4567:4000
 
   web:
     image: cse301/web
     build: ./jitsi-meet
     container_name: cse301.web
     restart: unless-stopped
-    depends_on:
-      - api
+
+  nginx:
+    image: cse301/nginx
+    build: ./nginx
+    container_name: cse301.nginx
+    restart: unless-stopped
     ports:
-      - 3456:80
+      - 8081:80
