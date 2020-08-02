@@ -9,6 +9,7 @@ info:
 
 servers:
   - url: http://localhost:4000
+  - url: https://cse301.namdd72.tech
 
 tags:
   - name: user
