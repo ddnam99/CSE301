@@ -8,6 +8,7 @@ import PrivateRoute from "./router/PrivateRoute";
 
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.min.css";
+import "./assets/style/fontawesome.css";
 
 const App = () => {
   return (
