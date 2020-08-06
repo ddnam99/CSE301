@@ -41,7 +41,7 @@ const Meets = () => {
         displayName={user?.fullName}
         password={password}
         onAPILoad={logAPI}
-        domain="meet.namdd72.tech"
+        domain="jitsi.namdd72.tech"
         config={{
           // @ts-ignore
           prejoinPageEnabled: false,
@@ -50,7 +50,7 @@ const Meets = () => {
     );
 
   return (
-    <div className="container meet-screen mt-4">
+    <div className="meet-screen" style={{ height: window.innerHeight }}>
       <div className="welcome-content">
         <div className="mb-2">Xin chào</div>
         <h1 className="mb-5">{user?.fullName}</h1>
@@ -72,9 +72,11 @@ const Meets = () => {
           setOnCall={setOnCall}
         />
       </div>
-      <button onClick={onLogout} type="button">
-        Log out
-      </button>
+      <div className="modal-dialog-centered">
+        <button onClick={onLogout} type="button">
+          Log out
+        </button>
+      </div>
     </div>
   );
 };
