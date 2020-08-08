@@ -1,10 +1,11 @@
 .login-screen {
   background-image: url("../images/bg-login.png");
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 500px;
   color: #ffffff;
   font-weight: bold;
+  background-size: 117%;
+  min-width: 1350px;
+  min-height: 650px;
 
   .content {
     margin: auto;
@@ -13,10 +14,6 @@
 
     .text-register {
       font-size: 20px;
-    }
-
-    .text-title {
-      font-size: 25px;
     }
 
     h1 {

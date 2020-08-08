@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
 import { Props, JitsiMeetAPIOptions } from "./types";
 import * as Default from "./defaults";
@@ -40,6 +41,7 @@ const Jitsi: React.FC<Props> = (props: Props) => {
 
       const api = new window.JitsiMeetExternalAPI(domain, options);
 
+      // eslint-disable-next-line no-throw-literal
       if (!api) throw "Failed to create JitsiMeetExternalAPI istance";
 
       if (onAPILoad) onAPILoad(api);

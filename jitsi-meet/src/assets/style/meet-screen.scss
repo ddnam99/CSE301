@@ -1,7 +1,9 @@
 .meet-screen {
   background-image: url("../images/home-meet.PNG");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 110%;
+  min-width: 1350px;
+  min-height: 650px;
 
   .welcome-content {
     padding-top: 100px;
@@ -32,6 +34,7 @@
     input {
       border: 1px solid #000000;
       padding: 5px 5px;
+      background-color: initial;
 
       &:focus {
         outline: none;

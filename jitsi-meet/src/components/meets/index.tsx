@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AuthState } from "../../redux/reducers/Auth.reducers";
 import { RootState } from "../../redux/store";
 
 import CreateRoom from "./create-room";
 import JoinRoom from "./join-room";
-import Jitsi from "../Jitsi";
+import Jitsi from "../jitsi";
 
 import { useDispatch, useSelector } from "react-redux";
 import { actLogout } from "../../redux/actions/Auth.actions";
@@ -41,7 +41,7 @@ const Meets = () => {
         displayName={user?.fullName}
         password={password}
         onAPILoad={logAPI}
-        domain="jitsi.namdd72.tech"
+        domain="cse301.namdd72.tech"
         config={{
           // @ts-ignore
           prejoinPageEnabled: false,
@@ -50,7 +50,10 @@ const Meets = () => {
     );
 
   return (
-    <div className="meet-screen" style={{ height: window.innerHeight }}>
+    <div
+      className="meet-screen d-flex flex-column justify-content-sm-between"
+      style={{ height: window.innerHeight }}
+    >
       <div className="welcome-content">
         <div className="mb-2">Xin chào</div>
         <h1 className="mb-5">{user?.fullName}</h1>
@@ -72,7 +75,7 @@ const Meets = () => {
           setOnCall={setOnCall}
         />
       </div>
-      <div className="modal-dialog-centered">
+      <div>
         <button onClick={onLogout} type="button">
           Log out
         </button>

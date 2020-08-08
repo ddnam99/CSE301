@@ -1,4 +1,4 @@
-FROM node:12.18-alpine as builder
+FROM node:12.18-alpine as build
 
 WORKDIR /app
 COPY package.json .
@@ -12,5 +12,5 @@ FROM nginx:1.14.2-alpine
 
 LABEL Author="Duong Duc Nam (nampt1999@gmail.com)"
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf

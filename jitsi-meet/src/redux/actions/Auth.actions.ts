@@ -1,7 +1,6 @@
 import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
-  ADD_ALERT,
 } from "../../helpers/ActionTypes";
 
 export const actLoginSuccess = (user: any, token: string) => {
