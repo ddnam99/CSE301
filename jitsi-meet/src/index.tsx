@@ -6,7 +6,6 @@ import * as serviceWorker from "./serviceWorker";
 import dotenv from "dotenv";
 
 import App from "./App";
-
 import store from "./redux/store";
 
 dotenv.config();

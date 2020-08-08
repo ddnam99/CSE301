@@ -5,7 +5,7 @@ COPY package.json .
 RUN npm install 
 
 COPY . .
-ENV JITSI_API=https://cse301.namdd72.tech
+ENV REACT_APP_API_BASE_URL=https://cse301.namdd72.tech
 RUN npm run build
 
 FROM nginx:1.14.2-alpine
